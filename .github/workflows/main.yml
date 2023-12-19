@@ -12,8 +12,16 @@ jobs:
     - name: Deploy Website 
       uses: garygrossgarten/github-action-ssh@v0.3.0
       with:
-        command: ${{ secrets.CMD }}
         host: ${{ secrets.HOSTS }}
         username: ${{ secrets.USER }}
         port: ${{ secrets.PORT }}
         privateKey: ${{ secrets.PRIKEY }}
+        command: |
+              cd /srv/site
+              cd honestperson
+              git remote update
+              git checkout production
+              git pull origin production
+              composer du
+              composer install
+              php artisan optimize:clear  
