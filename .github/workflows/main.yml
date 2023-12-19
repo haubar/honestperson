@@ -1,0 +1,19 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Deploy Website 
+      uses: garygrossgarten/github-action-ssh@v0.3.0
+      with:
+        command: ${{ secrets.CMD }}
+        host: ${{ secrets.HOSTS }}
+        username: ${{ secrets.USER }}
+        port: ${{ secrets.PORT }}
+        privateKey: ${{ secrets.PRIKEY }}
