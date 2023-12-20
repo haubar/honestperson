@@ -1,139 +1,64 @@
-
-{% for comment in comments %}
-<li class="d-flex flex-column">
-    <h3>
-        {{ comment.display_name }} {% if comment.parent %}replied{% else %}commented{% endif %} on <a href="{{ comment.post.url }}">{{ comment.post.title }}</a>
-    </h3>
-    <p class="info">
-        On <time datetime="{{ comment.created_at }}">{{ comment.created_at | date('M d, Y') }}</time>
-    </p>
-    <p class="excerpt">{{ comment.content | raw }}</p>
-</li>
-{% else %}
-<li class="no-data">{{ __SELF__.noPostsMessage }}</li>
-{% endfor %}
-
-<label>留言</label>
+{% if showComments %}
 <div id="comments" class="comments-area">
   <ol class="comment-list">
     {% for index, comment in comments %}
-    <li id="comment-1234" class="comment even {% if key is even %} thread-even {% else %} thread-odd {% endif %} depth-1 parent">
-      <article id="div-comment-1234" class="comment-body">
+    <li id="comment-{{ comment.id }}" class="comment even {% if index is odd %}thread-even{% else %}thread-odd{% endif %} depth-1 parent">
+      <article id="div-comment-{{ comment.id }}" class="comment-body">
         <footer class="comment-meta">
-          <div class="comment-author vcard"> <img alt="頭像" src="https://secure.gravatar.com/avatar/8e4705634f348516954dc926aa051e9a?s=56&amp;d=mm&amp;r=g" data-lazy-srcset="https://secure.gravatar.com/avatar/8e4705634f348516954dc926aa051e9a?s=112&amp;d=mm&amp;r=g 2x" class="avatar avatar-56 photo entered lazyloaded" height="56" width="56" decoding="async" data-lazy-src="https://secure.gravatar.com/avatar/8e4705634f348516954dc926aa051e9a?s=56&amp;d=mm&amp;r=g" data-ll-status="loaded" srcset="https://secure.gravatar.com/avatar/8e4705634f348516954dc926aa051e9a?s=112&amp;d=mm&amp;r=g 2x">
+          <div class="comment-author vcard"> 
+            <img alt="頭像" src="https://secure.gravatar.com/avatar/8e4705634f348516954dc926aa051e9a?s=56&amp;d=mm&amp;r=g" data-lazy-srcset="https://secure.gravatar.com/avatar/8e4705634f348516954dc926aa051e9a?s=112&amp;d=mm&amp;r=g 2x" class="avatar avatar-56 photo entered lazyloaded" height="56" width="56" decoding="async" data-lazy-src="https://secure.gravatar.com/avatar/8e4705634f348516954dc926aa051e9a?s=56&amp;d=mm&amp;r=g" data-ll-status="loaded" srcset="https://secure.gravatar.com/avatar/8e4705634f348516954dc926aa051e9a?s=112&amp;d=mm&amp;r=g 2x">
             <noscript>
             <img alt="頭像" src="https://secure.gravatar.com/avatar/6461cc3d4c9f28ce760127b1ff92da08?s=56&#038;d=mm&#038;r=g" srcset="https://secure.gravatar.com/avatar/6461cc3d4c9f28ce760127b1ff92da08?s=112&#038;d=mm&#038;r=g 2x" class="avatar avatar-56 photo" height="56" width="56" decoding="async"/>
             </noscript>
-            <b class="fn">陳小姐</b><span class="says">表示:</span> </div>
-          <!-- .comment-author -->
-          <div class="comment-metadata"> <a href="https://rich01.com/us-stock-invest-all/#comment">
-            <time datetime="2021-02-06T03:59:18+08:00">2021-02-0603:59:18</time>
-            </a> </div>
-          <!-- .comment-metadata --> 
+            <b class="fn">{{ comment.author }}</b>
+            <span class="says">表示:</span> 
+          </div>
+          <div class="comment-metadata"> 
+            <a href="https://rich01.com/us-stock-invest-all/#comment">
+            <time datetime="{{ comment.created_at }}">{{ comment.created_at|date('Y-m-d h:i:s') }}</time>
+            </a> 
+          </div>
         </footer>
-        <!-- .comment-meta -->
         <div class="comment-content">
-          <p>您好，想要請教您，我與姊姊前陣子因為美金大跌，所以在玉山以及永豐分別買進20萬台幣的美金，這筆資金目前閒置中，不知道現在到底該轉投資美股嗎😭因為資金不集中，一邊大約七千美金，現在真的很苦惱不知道該怎麼操作😣</p>
+          {{ comment.comment_content | raw }}
+          <!-- <p>您好，想要請教您，我與姊姊前陣子因為美金大跌，所以在玉山以及永豐分別買進20萬台幣的美金，這筆資金目前閒置中，不知道現在到底該轉投資美股嗎😭因為資金不集中，一邊大約七千美金，現在真的很苦惱不知道該怎麼操作😣</p> -->
         </div>
-        <!-- .comment-content -->
-        <div class="reply"><a rel="nofollow" class="comment-reply-link" href="#comment" data-commentid="12464" data-postid="6567" data-belowelement="div-comment" data-respondelement="respond" data-replyto="回覆給「陳小姐」" aria-label="回覆給「陳小姐」">回覆</a></div>
+        <div class="reply">
+          <a rel="nofollow" class="comment-reply-link" href="#comment">回覆</a>
+        </div>
       </article>
-      <!-- .comment-body -->
+      <!-- 回應的回應 -->
+      {% for index, comment in comment.allchildren %}
       <ol class="children">
-        <li id="comment-12470" class="comment byuser comment-author-chiay0327 Honestperson odd alt depth-2">
-          <article id="div-comment-12470" class="comment-body">
+        <li id="comment-{{ comment.id }}" class="comment byuser comment-author-chiay0327 Honestperson odd alt depth-2">
+          <article id="div-comment-{{ comment.id }}" class="comment-body">
             <footer class="comment-meta">
-              <div class="comment-author vcard"> <img alt="頭像" src="https://secure.gravatar.com/avatar/6461cc3d4c9f28ce760127b1ff92da08?s=56&amp;d=mm&amp;r=g" data-lazy-srcset="https://secure.gravatar.com/avatar/6461cc3d4c9f28ce760127b1ff92da08?s=112&amp;d=mm&amp;r=g 2x" class="avatar avatar-56 photo entered lazyloaded" height="56" width="56" decoding="async" data-lazy-src="https://secure.gravatar.com/avatar/6461cc3d4c9f28ce760127b1ff92da08?s=56&amp;d=mm&amp;r=g" data-ll-status="loaded" srcset="https://secure.gravatar.com/avatar/6461cc3d4c9f28ce760127b1ff92da08?s=112&amp;d=mm&amp;r=g 2x">
+              <div class="comment-author vcard"> 
+                <img alt="頭像" src="https://secure.gravatar.com/avatar/6461cc3d4c9f28ce760127b1ff92da08?s=56&amp;d=mm&amp;r=g" data-lazy-srcset="https://secure.gravatar.com/avatar/6461cc3d4c9f28ce760127b1ff92da08?s=112&amp;d=mm&amp;r=g 2x" class="avatar avatar-56 photo entered lazyloaded" height="56" width="56" decoding="async" data-lazy-src="https://secure.gravatar.com/avatar/6461cc3d4c9f28ce760127b1ff92da08?s=56&amp;d=mm&amp;r=g" data-ll-status="loaded" srcset="https://secure.gravatar.com/avatar/6461cc3d4c9f28ce760127b1ff92da08?s=112&amp;d=mm&amp;r=g 2x">
                 <noscript>
                 <img alt="頭像" src="https://secure.gravatar.com/avatar/6461cc3d4c9f28ce760127b1ff92da08?s=56&#038;d=mm&#038;r=g" srcset="https://secure.gravatar.com/avatar/6461cc3d4c9f28ce760127b1ff92da08?s=112&#038;d=mm&#038;r=g 2x" class="avatar avatar-56 photo" height="56" width="56" decoding="async"/>
                 </noscript>
-                <b class="fn">老實人</b><span class="says">表示:</span> </div>
-              <!-- .comment-author -->
-              
-              <div class="comment-metadata"> <a href="https://rich01.com/us-stock-invest-all/#comment-12470">
-                <time datetime="2021-02-06T18:01:48+08:00">2021-02-0618:01:48</time>
-                </a> </div>
-              <!-- .comment-metadata --> 
-              
+                <b class="fn">老實人</b>
+                <span class="says">表示:</span> 
+              </div>
+              <div class="comment-metadata"> 
+                <a href="https://rich01.com/us-stock-invest-all/#comment-12470">
+                <time>{{ comment.created_at|date('Y-m-d h:i:s') }}</time>
+                </a> 
+              </div>
             </footer>
-            <!-- .comment-meta -->
-            
             <div class="comment-content">
-              <p>我也買蠻多的，至於閒置似乎不是問題，因為你們原本買之前應該也沒打算做什麼？</p>
-              <p>不知道就放定存吧，雖然利率不高。至於投資，記得不懂不要碰，真的想投資請先花時間做功課搞懂。</p>
+              {{ comment.comment_content | raw }}
+            </div>            
+            <div class="reply">
+              <a rel="nofollow" class="comment-reply-link" href="#comment-12470">回覆</a>
             </div>
-            <!-- .comment-content -->
-            
-            <div class="reply"><a rel="nofollow" class="comment-reply-link" href="#comment-12470" data-commentid="12470" data-postid="6567" data-belowelement="div-comment-12470" data-respondelement="respond" data-replyto="回覆給「老實人」" aria-label="回覆給「老實人」">回覆</a></div>
           </article>
-          <!-- .comment-body --> 
         </li>
-        <!-- #comment-## -->
       </ol>
-      <!-- .children --> 
-    </li>
-    <!-- #comment-## -->
-    <li id="comment-12509" class="comment even thread-odd thread-alt depth-1 parent">
-      <article id="div-comment-12509" class="comment-body">
-        <footer class="comment-meta">
-          <div class="comment-author vcard"> <img alt="" src="https://secure.gravatar.com/avatar/9b63b50bcdd19f54daba512f86a0f899?s=56&amp;d=mm&amp;r=g" data-lazy-srcset="https://secure.gravatar.com/avatar/9b63b50bcdd19f54daba512f86a0f899?s=112&amp;d=mm&amp;r=g 2x" class="avatar avatar-56 photo entered lazyloaded" height="56" width="56" decoding="async" data-lazy-src="https://secure.gravatar.com/avatar/9b63b50bcdd19f54daba512f86a0f899?s=56&amp;d=mm&amp;r=g" data-ll-status="loaded" srcset="https://secure.gravatar.com/avatar/9b63b50bcdd19f54daba512f86a0f899?s=112&amp;d=mm&amp;r=g 2x">
-            <noscript>
-            <img alt="頭像" src="https://secure.gravatar.com/avatar/6461cc3d4c9f28ce760127b1ff92da08?s=56&#038;d=mm&#038;r=g" srcset="https://secure.gravatar.com/avatar/6461cc3d4c9f28ce760127b1ff92da08?s=112&#038;d=mm&#038;r=g 2x" class="avatar avatar-56 photo" height="56" width="56" decoding="async"/>
-            </noscript>
-            <b class="fn">peter</b><span class="says">表示:</span> </div>
-          <!-- .comment-author -->
-          
-          <div class="comment-metadata"> <a href="https://rich01.com/us-stock-invest-all/#comment-12509">
-            <time datetime="2021-02-13T14:28:31+08:00">2021-02-1314:28:31</time>
-            </a> </div>
-          <!-- .comment-metadata --> 
-          
-        </footer>
-        <!-- .comment-meta -->
-        
-        <div class="comment-content">
-          <p>請問 Firstrade 比較小間，可靠嗎？台幣100萬，適合放Firstarde 短線投資嗎？</p>
-        </div>
-        <!-- .comment-content -->
-        
-        <div class="reply"><a rel="nofollow" class="comment-reply-link" href="#comment-12509" data-commentid="12509" data-postid="6567" data-belowelement="div-comment-12509" data-respondelement="respond" data-replyto="回覆給「peter」" aria-label="回覆給「peter」">回覆</a></div>
-      </article>
-      <!-- .comment-body -->
-      <ol class="children">
-        <li id="comment-12510" class="comment byuser comment-author-chiay0327 Honestperson odd alt depth-2">
-          <article id="div-comment-12510" class="comment-body">
-            <footer class="comment-meta">
-              <div class="comment-author vcard"> <img alt="頭像" src="https://secure.gravatar.com/avatar/6461cc3d4c9f28ce760127b1ff92da08?s=56&amp;d=mm&amp;r=g" data-lazy-srcset="https://secure.gravatar.com/avatar/6461cc3d4c9f28ce760127b1ff92da08?s=112&amp;d=mm&amp;r=g 2x" class="avatar avatar-56 photo entered lazyloaded" height="56" width="56" decoding="async" data-lazy-src="https://secure.gravatar.com/avatar/6461cc3d4c9f28ce760127b1ff92da08?s=56&amp;d=mm&amp;r=g" data-ll-status="loaded" srcset="https://secure.gravatar.com/avatar/6461cc3d4c9f28ce760127b1ff92da08?s=112&amp;d=mm&amp;r=g 2x">
-                <noscript>
-                <img alt="頭像" src="https://secure.gravatar.com/avatar/6461cc3d4c9f28ce760127b1ff92da08?s=56&#038;d=mm&#038;r=g" srcset="https://secure.gravatar.com/avatar/6461cc3d4c9f28ce760127b1ff92da08?s=112&#038;d=mm&#038;r=g 2x" class="avatar avatar-56 photo" height="56" width="56" decoding="async"/>
-                </noscript>
-                <b class="fn">老實人</b><span class="says">表示:</span> </div>
-              <!-- .comment-author -->
-              
-              <div class="comment-metadata"> <a href="https://rich01.com/us-stock-invest-all/#comment-12510">
-                <time datetime="2021-02-13T18:36:26+08:00">2021-02-1318:36:26</time>
-                </a> </div>
-              <!-- .comment-metadata --> 
-              
-            </footer>
-            <!-- .comment-meta -->
-            
-            <div class="comment-content">
-              <p>看你怎麼想，用戶有上千萬人在用的公司原來是比較小間？在美國的確如此。</p>
-              <p>可不可靠文中都已經說了，你如果需要更多信心，應該是自己去做更多功課。</p>
-              <p>會擔心就不要用，你也可以用台灣的複委託就好。</p>
-            </div>
-            <!-- .comment-content -->
-            
-            <div class="reply"><a rel="nofollow" class="comment-reply-link" href="#comment-12510" data-commentid="12510" data-postid="6567" data-belowelement="div-comment-12510" data-respondelement="respond" data-replyto="回覆給「老實人」" aria-label="回覆給「老實人」">回覆</a></div>
-          </article>
-          <!-- .comment-body --> 
-        </li>
-        <!-- #comment-## -->
-      </ol>
-      <!-- .children --> 
+      {% endfor %}
     </li>
     {% endfor %}
-    <!-- #comment-## -->
   </ol>
 </div>
+{% endif %}

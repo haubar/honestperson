@@ -119,7 +119,7 @@ class Tag extends Model
      */
     public function getPostCountAttribute()
     {
-        return optional($this->posts_count)->count ?? 0;
+        return optional($this->posts_count->first())->count ?? 0;
     }
 
 }

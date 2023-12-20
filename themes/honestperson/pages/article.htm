@@ -5,9 +5,13 @@ meta_title = "{{ blog.title }}"
 
 [blogPost]
 
-[bloghub_CommentList]
+[bloghubCommentList]
 amount = 10
 sortOrder = 'created_at desc'
+
+[bloghubCommentList]
+[bloghubCommentSection]
+[blogCategories]
 ==
 
 {% if post is empty %}
@@ -30,9 +34,9 @@ sortOrder = 'created_at desc'
     </ul>
     <h1 class="my-3">{{ post.title }}</h1>
     <ul class="post-meta mb-4">
-        {% for category in post.categories %}
+        {% for tag in post.bloghub.tags %}
         <li>
-            <a href="{{ 'category'|page({ slug: category.slug, id: category.id }) }}">{{ category.name }}</a>
+            <a href="{{ 'tags'|page({ slug: tag.slug }) }}">{{ tag.title }}</a>
         </li>
         {% endfor %}
     </ul>
@@ -40,9 +44,20 @@ sortOrder = 'created_at desc'
         {{ post.content_html | raw }}
     </div>
 </article>
-{% component 'CommentList' %}
+
 <div id="respond" class="mt-5">
-    {% partial 'comment-list' comments=post.bloghub.comments %}
+    <label>留言</label>
+    {% partial 'comment-list' comments=comments %}
     {% partial 'comment-form' %}
 </div>
 
+
+<hr>
+與測試的分隔線
+<hr>
+
+<div  class="mt-5">
+    <label>留言</label>
+    <!-- {% component 'bloghubCommentList' %} -->
+    {% component 'bloghubCommentSection' %}
+</div>
