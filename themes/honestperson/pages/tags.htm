@@ -1,0 +1,18 @@
+url = "tags/:slug/:page?"
+layout = "default"
+title = "{{ blog.title }}"
+
+
+[bloghubPostsByTag]
+pageNumber = {{ :page }}
+postsPerPage = 5
+noPostsMessage = '...'
+tagFilter = {{ :slug }}
+==
+{% if not posts %}
+    {% do abort(404) %}
+{% else %}
+    {% for post in posts %}
+        {% partial 'post-card' post=post %}
+    {% endfor %}
+{% endif %}

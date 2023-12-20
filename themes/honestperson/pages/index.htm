@@ -1,0 +1,26 @@
+title = "老實人投資理財"
+url = "/:page?"
+layout = "default"
+
+[blogPosts]
+postsPerPage = 5
+noPostsMessage = '...'
+sortOrder = 'published_at desc'
+pageNumber = '{{ :page }}'
+categoryPage = 'category'
+postPage = 'article'
+==
+
+<div class="col-12">
+    <h2 class="section-title">Latest Articles / 最新文章</h2>
+</div>
+
+{% for post in posts %}
+    {% partial 'post-card' post=post %}
+{% endfor %}
+
+
+{% if posts.lastPage > 1 %}
+    {% partial 'site/pagination' posts=posts %}
+{% endif %}
+

@@ -1,0 +1,14 @@
+
+<div class="row">
+    <!-- 簡介 -->
+    {% partial 'intro' links=blogConfig.social_links showRssLink=true %}
+    
+    <!-- 精選文章 -->
+    {% partial 'recommend' links=blogConfig.social_links showRssLink=true %}
+    
+    <!-- 文章tag -->
+    <!-- {% partial 'category' %} -->
+    {% partial 'tags' %} 
+    <!-- 社群 -->
+    {% partial 'social-links' %}
+</div>

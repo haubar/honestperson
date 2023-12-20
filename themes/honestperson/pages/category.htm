@@ -1,0 +1,15 @@
+url = "category/:slug/:page?"
+layout = "default"
+title = "{{ blog.title }}"
+
+[blogPosts]
+categoryFilter = {{:slug}}
+==
+{% if not posts %}
+    {% do abort(404) %}
+{% else %}
+    {% for post in posts %}
+        {% partial 'post-card' post=post %}
+    {% endfor %}
+{% endif %}
+

@@ -1,0 +1,32 @@
+
+<div class="col-md-12 mb-4">
+    <article class="card article-card"> 
+        <a href="{{ 'article'|page({ slug: post.slug, id: post.id }) }}">
+            <div class="card-image">
+                <div class="post-info"> 
+                    <!-- <span class="text-uppercase">10 12 2023</span>  -->
+                    <span class="text-uppercase">{{ post.published_at|date('j M Y') }}</span> 
+                </div>
+                {% if post.featured_images|length %}
+                    <img loading="lazy" decoding="async" src="{{ post.featured_images[0].path }}" alt="{{ post.featured_images[0].description }}" class="w-100"> 
+                {% else %} 
+                    <img loading="lazy" decoding="async" src="https://picsum.photos/400" alt="{{ post.featured_images[0].description }}" class="w-100"> 
+                {% endif %}
+            </div>
+        </a>
+        <div class="card-body px-0 pb-0">
+            <ul class="post-meta mb-2">
+                {% for category in post.categories %}
+                <li>
+                    <a href="{{ 'category'|page({ slug: category.slug, id: category.id }) }}">{{ category.name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+            <h2><a class="post-title" href="{{ 'article'|page({ slug: post.slug, id: post.id }) }}">{{post.title}}</a></h2>
+            <p class="card-text">{{ post.content }}</p>
+            <div class="content"> 
+                <a class="read-more-btn" href="{{ 'article'|page({ slug: post.slug, id: post.id }) }}">Read Full Article</a> 
+            </div>
+        </div>
+    </article>
+</div>

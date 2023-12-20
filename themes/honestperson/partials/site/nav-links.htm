@@ -1,0 +1,11 @@
+[blogCategories]
+==
+{% set activeNavLink = activeNavLink|default(this.page.id) %}
+<li class="nav-item"> 
+    <a class="nav-link {{ activeNavLink == 'about' ? 'active' }}" href="/about">關於老實人</a> 
+</li>
+{% for category in categories %}
+<li class="nav-item"> 
+    <a class="nav-link {{ category.slug == currentCategorySlug ? 'active' }}" href="{{ 'category'|page({ slug: category.slug, id: category.id }) }}"> {{ category.name }}</a> 
+</li>
+{% endfor %}

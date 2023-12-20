@@ -1,0 +1,58 @@
+url = "search/:keyword/:page?"
+layout = "default"
+title = "{{ blog.title }}"
+meta_title = "{{ blog.title }}"
+
+[blogPosts]
+categoryFilter = {{:keyword}}
+==
+
+
+<div class="col-12">
+    <h2 class="section-title">Latest Articles / 最新文章</h2>
+</div>
+
+{% for post in posts %}
+    {% partial 'post-card' post=post %}
+{% endfor %}
+
+
+{% if posts.lastPage > 1 %}
+<div class="col-12">
+    <div class="row">
+      <div class="col-12">
+        <nav class="mt-4"> 
+          <!-- pagination -->
+          <nav class="mb-md-50">
+            <ul class="pagination justify-content-center">
+                {% if posts.currentPage > 1 %}
+                <li class="page-item"> 
+                    <a class="page-link" href="{{ this.page.baseFileName|page({ (__SELF__.pageParam): (posts.currentPage-1) }) }}" aria-label="Pagination Arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
+                        </svg>
+                    </a> 
+                </li>
+                {% endif %}
+                {% for page in 1..posts.lastPage %}
+                <li class="page-item {{ posts.currentPage == page ? 'active' : null }} "> 
+                    <a href="{{ this.page.baseFileName|page({ (__SELF__.pageParam): page }) }}" class="page-link"> {{ page }} </a> 
+                </li>
+                {% endfor %}
+                {% if posts.lastPage > posts.currentPage %}
+                <li class="page-item"> 
+                    <a class="page-link" href="{{ this.page.baseFileName|page({ (__SELF__.pageParam): (posts.currentPage+1) }) }}" aria-label="Pagination Arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+                        </svg>
+                    </a> 
+                </li>
+                {% endif %}
+            </ul>
+          </nav>
+        </nav>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
