@@ -5,7 +5,7 @@
     <li id="comment-{{ comment.id }}" class="comment even {% if index is odd %}thread-even{% else %}thread-odd{% endif %} depth-1 parent">
       <article id="div-comment-{{ comment.id }}" class="comment-body">
         <footer class="comment-meta">
-          <div class="comment-author vcard"> 
+          <div class="comment-author vcard">
             <img alt="頭像" src="https://secure.gravatar.com/avatar/8e4705634f348516954dc926aa051e9a?s=56&amp;d=mm&amp;r=g" data-lazy-srcset="https://secure.gravatar.com/avatar/8e4705634f348516954dc926aa051e9a?s=112&amp;d=mm&amp;r=g 2x" class="avatar avatar-56 photo entered lazyloaded" height="56" width="56" decoding="async" data-lazy-src="https://secure.gravatar.com/avatar/8e4705634f348516954dc926aa051e9a?s=56&amp;d=mm&amp;r=g" data-ll-status="loaded" srcset="https://secure.gravatar.com/avatar/8e4705634f348516954dc926aa051e9a?s=112&amp;d=mm&amp;r=g 2x">
             <noscript>
             <img alt="頭像" src="https://secure.gravatar.com/avatar/6461cc3d4c9f28ce760127b1ff92da08?s=56&#038;d=mm&#038;r=g" srcset="https://secure.gravatar.com/avatar/6461cc3d4c9f28ce760127b1ff92da08?s=112&#038;d=mm&#038;r=g 2x" class="avatar avatar-56 photo" height="56" width="56" decoding="async"/>
@@ -23,9 +23,9 @@
           {{ comment.comment_content | raw }}
           <!-- <p>您好，想要請教您，我與姊姊前陣子因為美金大跌，所以在玉山以及永豐分別買進20萬台幣的美金，這筆資金目前閒置中，不知道現在到底該轉投資美股嗎😭因為資金不集中，一邊大約七千美金，現在真的很苦惱不知道該怎麼操作😣</p> -->
         </div>
-        <div class="reply">
-          <a rel="nofollow" class="comment-reply-link" href="#comment">回覆</a>
-        </div>
+        <!-- <div class="reply">
+          <a rel="nofollow" class="comment-reply-link" href="#comment-{{ comment.id }}" data-commentid="{{ comment.id }}" data-postid="{{ post.id }}">回覆</a>
+        </div> -->
       </article>
       <!-- 回應的回應 -->
       {% for index, comment in comment.allchildren %}
@@ -42,7 +42,7 @@
                 <span class="says">表示:</span> 
               </div>
               <div class="comment-metadata"> 
-                <a href="https://rich01.com/us-stock-invest-all/#comment-12470">
+                <a href="https://rich01.com/us-stock-invest-all/#comment-{{ comment.id }}">
                 <time>{{ comment.created_at|date('Y-m-d h:i:s') }}</time>
                 </a> 
               </div>
@@ -51,7 +51,7 @@
               {{ comment.comment_content | raw }}
             </div>            
             <div class="reply">
-              <a rel="nofollow" class="comment-reply-link" href="#comment-12470">回覆</a>
+              <a rel="nofollow" class="comment-reply-link" href="#comment-{{ comment.id }}">回覆</a>
             </div>
           </article>
         </li>

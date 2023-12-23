@@ -18,12 +18,12 @@
             <ul class="post-meta mb-2">
                 {% for tag in post.bloghub.tags %}
                 <li>
-                    <a href="{{ 'tags'|page({ slug: tag.slug }) }}">{{ tag.title }}</a>
+                    <a href="{{ 'tags'|page({ slug: tag.slug }) }}">{{ tag.title}}</a>
                 </li>
                 {% endfor %}
             </ul>
-            <h2><a class="post-title" href="{{ 'article'|page({ slug: post.slug, id: post.id }) }}">{{post.title}}</a></h2>
-            <p class="card-text">{{ post.content }}</p>
+            <h2><a class="post-title" href="{{ 'article'|page({ slug: post.slug, id: post.id }) }}">{{post.title | raw}}</a></h2>
+            <p class="card-text">{{ post.content  }}</p>
             <div class="content"> 
                 <a class="read-more-btn" href="{{ 'article'|page({ slug: post.slug, id: post.id }) }}">Read Full Article</a> 
             </div>

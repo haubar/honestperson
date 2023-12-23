@@ -126,6 +126,7 @@ abstract class ComponentBase extends Extendable implements CallsAnyMethod
      */
     public function init()
     {
+        $this->id = uniqid($this->alias);
     }
 
     /**

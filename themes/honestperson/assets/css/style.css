@@ -1033,4 +1033,17 @@ footer .section {
 .comment-form input[type=email], .comment-form input[type=submit], .comment-form input[type=text], .comment-form input[type=url] {
   width: 100%;
 }
+.search-box{
+  position: relative;
+}
+.search-box button{
+  background: url(../images/magnifier.png) 6px 5px no-repeat;
+  padding: 40px 32px 11px 15px;
+  border-radius: 0;
+  background-size: 15px;
+  background-position: calc(100% - 15px) center;
+  border:none;
+  position: absolute;
+  right: 0;
+}
 /*# sourceMappingURL=style.css.map */

@@ -1,7 +1,7 @@
 url = "article/:slug/:id"
 layout = "default"
-title = "{{ blog.title }}"
-meta_title = "{{ blog.title }}"
+title = "{{ post.title }}"
+meta_title = "{{ post.title }}"
 
 [blogPost]
 
@@ -9,8 +9,13 @@ meta_title = "{{ blog.title }}"
 amount = 10
 sortOrder = 'created_at desc'
 
-[bloghubCommentList]
+
 [bloghubCommentSection]
+sortOrder = 'published_at desc'
+commentHierarchy = 1
+commentsAnchor = 'comments'
+
+
 [blogCategories]
 ==
 
@@ -45,19 +50,25 @@ sortOrder = 'created_at desc'
     </div>
 </article>
 
-<div id="respond" class="mt-5">
-    <label>留言</label>
-    {% partial 'comment-list' comments=comments %}
-    {% partial 'comment-form' %}
-</div>
 
+{% if showCommentsForm %}
+<div id="respond" class="mt-5" data-bloghub-comments>
+    <label>留言</label>
+    {% partial 'comment-list' comments=comments post=post %}
+    {% partial 'comment-form' cid=bloghubCommentSection.id post=post %}
+</div>
+{% endif %}
+{% framework extras %}
 
 <hr>
 與測試的分隔線
 <hr>
 
+
 <div  class="mt-5">
-    <label>留言</label>
     <!-- {% component 'bloghubCommentList' %} -->
-    {% component 'bloghubCommentSection' %}
+    {#{% component 'bloghubCommentSection' %} #}
+
+    <!-- ajax用 -->
+    {% framework extras %}
 </div>
