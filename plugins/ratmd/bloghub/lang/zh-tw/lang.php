@@ -285,7 +285,7 @@ return [
             'aboutMeDescription' => 'A small description about yourself, supporting themes may show them on your posts.'
         ],
         'visitors' => [
-            'views' => 'Views / Unique'
+            'views' => '瀏覽次數 / 觀看人次'
         ]
     ],
 
