@@ -4265,51 +4265,6 @@
             "install-path": "../../plugins/rainlab/blog"
         },
         {
-            "name": "rainlab/translate-plugin",
-            "version": "v1.12.0",
-            "version_normalized": "1.12.0.0",
-            "dist": {
-                "type": "zip",
-                "url": "https://gateway.octobercms.com/composer/dist/rainlab/translate-plugin/rainlab-translate-plugin-695bdc9abff10ea3c49b616af8ece79efc9fcb73-zip-249c2f.zip",
-                "reference": "695bdc9abff10ea3c49b616af8ece79efc9fcb73",
-                "shasum": "1380ac6f17505f4217a2fd6976099dde0039008b"
-            },
-            "require": {
-                "composer/installers": "~1.0",
-                "php": ">=5.5.9"
-            },
-            "time": "2022-07-21T01:12:31+00:00",
-            "type": "october-plugin",
-            "installation-source": "dist",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Alexey Bobkov",
-                    "email": "aleksey.bobkov@gmail.com",
-                    "role": "Co-founder"
-                },
-                {
-                    "name": "Samuel Georges",
-                    "email": "daftspunky@gmail.com",
-                    "role": "Co-founder"
-                }
-            ],
-            "description": "Translate plugin for October CMS",
-            "homepage": "https://octobercms.com/plugin/rainlab-translate",
-            "keywords": [
-                "october",
-                "octobercms",
-                "translate"
-            ],
-            "support": {
-                "source": "https://github.com/rainlab/translate-plugin/tree/v1.12.0",
-                "issues": "https://github.com/rainlab/translate-plugin/issues"
-            },
-            "install-path": "../../plugins/rainlab/translate"
-        },
-        {
             "name": "ramsey/uuid",
             "version": "3.9.7",
             "version_normalized": "3.9.7.0",

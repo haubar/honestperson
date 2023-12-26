@@ -93,13 +93,13 @@ return [
             'views' => '視圖',
             'visitors' => ' 訪客',
             'published_posts' => '已發表的文章',
-            'default_order' => '默認順序',
+            'default_order' => '預設順序',
             'default_order_comment' => 'Change the default order used for the post list',
             'by_published' => '按出版日期',
             'by_views' => '通過視圖',
             'by_visitors' => '由訪客',
             'total' => '總帖子',
-            'published' => '出版',
+            'published' => '發布',
             'scheduled' => '計劃',
             'draft' => '草稿',
             'posts_list' => '帖子列表',
@@ -228,16 +228,16 @@ return [
             'authorEmail' => '作者電子郵件地址',
             'authorEmailComment' => 'The E-Mail address of the author, when not written by a logged-in user.',
             'post_visibility' => [
-                'label' => 'Comments Visibility',
-                'comment' => 'Show  or Hide the comments section on this post.'
+                'label' => '顯示留言',
+                'comment' => '是否開放此篇文章的留言板.'
             ],
             'post_mode' => [
-                'label' => 'Comment Mode',
-                'comment' => 'Change the comment mode for this post.',
-                'open' => 'Open (Everyone can comment)',
-                'restricted' => 'Restricted (Only logged-In Users can comment)',
-                'private' => 'Private (Only logged-in backend users can comment)',
-                'closed' => 'Closed (Noone can comment)'
+                'label' => '留言模式',
+                'comment' => '更改這篇文章的留言模式.',
+                'open' => '完全開放',
+                'restricted' => '限登入網站者',
+                'private' => '限管理員',
+                'closed' => '不開放'
             ],
             'guest' => '訪客',
             'seconds_ago' => '一秒前',

@@ -45,6 +45,8 @@ return [
         'created_date' => '建立日期',
         'updated' => '更新時間',
         'updated_date' => '更新日期',
+        'published_by' => '發布者',
+        'current_user' => '目前使用者',
         'published' => '發布时间',
         'published_date' => '發布日期',
         'published_validation' => '請指定發布日期',
