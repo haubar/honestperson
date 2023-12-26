@@ -53,7 +53,7 @@ return [
         'login' => 'Login',
         'input_username' => 'Login',
         'input_password' => 'Password',
-        'login_prompt' => 'Welcome back! Please login to your account to continue.',
+        'login_prompt' => '歡迎回來！請登錄到您的帳戶繼續.',
         'reset' => 'Reset',
         'restore' => 'Restore',
         'login_placeholder' => 'login',
