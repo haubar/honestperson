@@ -38,7 +38,7 @@ return [
             'comment' => 'Displays a list of posts by the comments counter.'
         ],
         'comments_list' => [
-            'label' => '留言列很',
+            'label' => '留言列表',
             'comment' => 'Displays a list of comments on the page.',
             'exclude_posts' => 'Exclude Posts',
             'exclude_posts_description' => 'Exclude specific post ids or post slugs (comma-separated list).',
@@ -75,13 +75,13 @@ return [
             'disable_form_comment' => 'Disables the comment submit form, regardless of the post option.',
         ],
         'date' => [
-            'label' => 'Posts by Date',
-            'comment' => 'Displays a list of posts by date.',
-            'filter' => 'Date filter',
+            'label' => '按日期發布',
+            'comment' => '按日期顯示文章列表.',
+            'filter' => '日期過濾器',
             'filter_comment' => 'Enter a specific date or URL parameter to filter the posts by.',
         ],
         'post' => [
-            'date_range' => 'Default date range',
+            'date_range' => '預設日期範圍',
             'date_range_comment' => 'Change the default date range used for the graphs.',
             '7days' => 'Last 7 days',
             '14days' => 'Last 14 days',
@@ -92,7 +92,7 @@ return [
             'views_visitors' => 'Views / Visitors',
             'views' => 'Views',
             'visitors' => ' Visitors',
-            'published_posts' => 'Published Posts',
+            'published_posts' => '已發表的文章',
             'default_order' => 'Default order',
             'default_order_comment' => 'Change the default order used for the post list',
             'by_published' => 'By Published Date',
@@ -111,17 +111,17 @@ return [
             'filter_comment' => 'Enter a tag slug or URL parameter to filter the posts by.',
         ],
         'tags' => [
-            'label' => 'Tags List',
-            'comment' => 'Displays a list of (promoted) blog tags.',
-            'tags_page' => 'Tag Archive Page',
-            'tags_page_comment' => 'Name of the CMS Page used for the tag archive.',
-            'only_promoted' => 'Promoted only',
-            'only_promoted_comment' => 'Display only promoted tags',
-            'amount' => 'Tag Amount',
-            'amount_description' => 'The amount of tags to be passed to the list.',
-            'amount_validation' => 'Invalid format of the the amount value.',
-            'view' => 'Tag View',
-            'view_comment' => 'Change the View of the Tag list'
+            'label' => '標籤列表',
+            'comment' => '顯示（促進）博客標籤的列表。',
+            'tags_page' => '標籤檔案頁面',
+            'tags_page_comment' => '標籤存檔的CMS頁面的名稱。',
+            'only_promoted' => '僅晉升',
+            'only_promoted_comment' => '顯示僅宣傳標籤',
+            'amount' => '標籤量',
+            'amount_description' => '標籤的數量將傳遞給列表。',
+            'amount_validation' => '金額值的格式無效。',
+            'view' => '標籤視圖',
+            'view_comment' => '更改標籤列表的視圖'
         ],
         'deprecated' => [
             'authors_label' => '[OLD] Posts by Author',
@@ -209,23 +209,23 @@ return [
             'recordName' => '留言',
             'status' => '留言狀態',
             'statusColumn' => '狀態',
-            'statusComment' => 'Change the current Comment Status',
-            'statusPending' => 'Pending',
-            'statusApproved' => 'Approved',
-            'statusRejected' => 'Rejected',
-            'statusSpam' => 'Spam',
+            'statusComment' => '更改當前評論狀態',
+            'statusPending' => '待辦的',
+            'statusApproved' => '得到正式認可的',
+            'statusRejected' => '拒絕',
+            'statusSpam' => '垃圾郵件',
             'title' => '標題',
-            'titleComment' => 'The title of the comment (depending on the Bloghub configuration).',
+            'titleComment' => '評論的標題（取決於Bloghub配置）',
             'content' => '留言內容',
-            'contentComment' => 'The plain content of the comment.',
-            'favorite' => 'Favorite Comment',
-            'favoriteComment' => 'Favorite comments are highlighted and may be shown on top of the comments list.',
-            'favoriteColumn' => 'Favorite',
-            'likes' => 'Likes',
-            'dislikes' => 'Disikes',
-            'author' => 'Auther Username',
-            'authorComment' => 'The username of the author, when not written by a logged-in user.',
-            'authorEmail' => 'Author E-Mail address',
+            'contentComment' => '評論的簡單內容.',
+            'favorite' => '最喜歡的評論',
+            'favoriteComment' => '最喜歡的評論被突出顯示，可以顯示在評論列表的頂部。',
+            'favoriteColumn' => '最喜歡的',
+            'likes' => '喜歡',
+            'dislikes' => '毫無疑問',
+            'author' => '自動用戶名',
+            'authorComment' => '作者的用戶名, when not written by a logged-in user.',
+            'authorEmail' => '作者電子郵件地址',
             'authorEmailComment' => 'The E-Mail address of the author, when not written by a logged-in user.',
             'post_visibility' => [
                 'label' => 'Comments Visibility',
@@ -325,19 +325,19 @@ return [
 
         'comments' => [
             'tab' => '留言',
-            'general_section' => 'General Settings',
-            'comment_form_section' => 'Form Settings',
+            'general_section' => '常規設置',
+            'comment_form_section' => '表單設置',
 
             'author_favorites' => [
-                'label' => 'Author Favorites',
+                'label' => '作者的最愛',
                 'comment' => 'Allow authors to favourite user comments.'
             ],
             'like_comment' => [
-                'label' => 'Like Comments',
+                'label' => '喜歡評論',
                 'comment' => 'Enable the Like button on each user comment.'
             ],
             'dislike_comment' => [
-                'label' => 'Dislike Comments',
+                'label' => '不喜歡評論',
                 'comment' => 'Enable the Dislike button on each user comment.'
             ],
             'restrict_to_users' => [
