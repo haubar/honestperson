@@ -29,22 +29,22 @@ columns:
         sortable: true
         searchable: true
     
-    favorite:
-        type: switch
-        label: ratmd.bloghub::lang.model.comments.favoriteColumn
-        sortable: true
-        default: false
-        width: 80px
+    # favorite:
+    #     type: switch
+    #     label: ratmd.bloghub::lang.model.comments.favoriteColumn
+    #     sortable: true
+    #     default: false
+    #     width: 80px
     
-    likes: 
-        type: number
-        label: ratmd.bloghub::lang.model.comments.likes
-        width: 80px
+    # likes: 
+    #     type: number
+    #     label: ratmd.bloghub::lang.model.comments.likes
+    #     width: 80px
     
-    dislikes: 
-        type: number
-        label: ratmd.bloghub::lang.model.comments.dislikes
-        width: 80px
+    # dislikes: 
+    #     type: number
+    #     label: ratmd.bloghub::lang.model.comments.dislikes
+    #     width: 80px
 
     created_at:
         type: datetime

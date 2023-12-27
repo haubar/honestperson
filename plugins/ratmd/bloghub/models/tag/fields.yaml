@@ -3,12 +3,12 @@
 # ===================================
 
 fields:
-    promote:
-        type: switch
-        label: ratmd.bloghub::lang.model.tags.promote
-        comment: ratmd.bloghub::lang.model.tags.promoteComment
-        permissions:
-            - ratmd.bloghub.tags.promoted
+    # promote:
+    #     type: switch
+    #     label: ratmd.bloghub::lang.model.tags.promote
+    #     comment: ratmd.bloghub::lang.model.tags.promoteComment
+    #     permissions:
+    #         - ratmd.bloghub.tags.promoted
 
     title:
         type: text
@@ -27,10 +27,10 @@ fields:
         label: ratmd.bloghub::lang.model.tags.description
         comment: ratmd.bloghub::lang.model.tags.descriptionComment
     
-    color:
-        type: colorpicker
-        label: ratmd.bloghub::lang.model.tags.color
-        commentAbove: ratmd.bloghub::lang.model.tags.colorComment
+    # color:
+    #     type: colorpicker
+    #     label: ratmd.bloghub::lang.model.tags.color
+    #     commentAbove: ratmd.bloghub::lang.model.tags.colorComment
     
     posts:
         type: relation

@@ -47,7 +47,7 @@ return [
         'updated_date' => '更新日期',
         'published_by' => '發布者',
         'current_user' => '目前使用者',
-        'published' => '發布时间',
+        'published' => '發布時間',
         'published_date' => '發布日期',
         'published_validation' => '請指定發布日期',
         'tab_edit' => '編輯',
