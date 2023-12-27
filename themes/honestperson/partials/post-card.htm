@@ -10,7 +10,7 @@
                 {% if post.featured_images|length %}
                     <img loading="lazy" decoding="async" src="{{ post.featured_images[0].path }}" alt="{{ post.featured_images[0].description }}" class="w-100"> 
                 {% else %} 
-                    <img loading="lazy" decoding="async" src="https://picsum.photos/400" alt="{{ post.featured_images[0].description }}" class="w-100"> 
+                    <img loading="lazy" decoding="async" src="{{'assets/images/loading.jpg'|theme}}" alt="{{ post.featured_images[0].description }}" class="w-100"> 
                 {% endif %}
             </div>
         </a>

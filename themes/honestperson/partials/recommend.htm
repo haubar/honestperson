@@ -14,7 +14,7 @@ sortOrder = 'published_at desc'
             <div class="widget-list">
                 {% for post in posts %}
                 <a class="media align-items-center" href="{{ 'article'|page({ slug: post.slug, id: post.id }) }}"> 
-                    <img loading="lazy" decoding="async" src="{{ post.featured_images[0].path ?? 'https://picsum.photos/100' }}" alt="{{ post.featured_images[0].description }}" class="w-100">
+                    <img loading="lazy" decoding="async" src="{{ post.featured_images[0].path ?? 'assets/images/loading.jpg'|theme }}" alt="{{ post.featured_images[0].description }}" class="w-100">
                     <div class="media-body ml-3">
                         <h3 style="margin-top:-5px">{{ post.title }}</h3>
                         <p class="mb-0 small">{{ (post.content|length > 50 ? post.content|slice(0, 80) ~ '…' : post.content ) }}</p>
