@@ -23,7 +23,7 @@
                 {% endfor %}
             </ul>
             <h2><a class="post-title" href="{{ 'article'|page({ slug: post.slug, id: post.id }) }}">{{post.title | raw}}</a></h2>
-            <p class="card-text">{{ post.content  }}</p>
+            <p class="card-text">{{ post.excerpt  }}</p>
             <div class="content"> 
                 <a class="read-more-btn" href="{{ 'article'|page({ slug: post.slug, id: post.id }) }}">Read Full Article</a> 
             </div>

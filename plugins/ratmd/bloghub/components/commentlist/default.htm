@@ -2,7 +2,7 @@
     {% for comment in comments %}
         <li class="d-flex flex-column">
             <h3>
-                {{ comment.display_name }} {% if comment.parent %}replied{% else %}commented{% endif %} on <a href="{{ comment.post.url }}">{{ comment.post.title }}</a>
+                {{ comment.author|default('訪客') }} {% if comment.parent %}replied{% else %}commented{% endif %} on <a href="{{ comment.post.url }}">{{ comment.post.title }}</a>
             </h3>
             <p class="info">
                 On <time datetime="{{ comment.created_at }}">{{ comment.created_at | date('M d, Y') }}</time>
