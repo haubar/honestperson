@@ -46,7 +46,7 @@ commentsAnchor = 'comments'
         {% endfor %}
     </ul>
     <div class="content">
-        {{ post.content_html | raw }}
+        {{ post.content | raw }}
     </div>
 </article>
 
@@ -65,10 +65,3 @@ commentsAnchor = 'comments'
 <hr>
 
 
-<div  class="mt-5">
-    <!-- {% component 'bloghubCommentList' %} -->
-    {#{% component 'bloghubCommentSection' %} #}
-
-    <!-- ajax用 -->
-    {% framework extras %}
-</div>
