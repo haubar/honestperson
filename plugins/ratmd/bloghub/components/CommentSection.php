@@ -853,7 +853,8 @@ class CommentSection extends ComponentBase
 
             return [
                 'status' => 'success',
-                'comments' => $this->renderPartial('@default')
+                'comments' => ''
+                // 'comments' => $this->renderPartial('@default')
             ];
         } else {
             throw new AjaxException(Lang::get('ratmd.bloghub::lang.frontend.errors.unknown_error'));
