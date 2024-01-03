@@ -4,10 +4,10 @@
 
 fields:
     
-    favorite:
-        type: switch
-        label: ratmd.bloghub::lang.model.comments.favorite
-        comment: ratmd.bloghub::lang.model.comments.favoriteComment
+    # favorite:
+    #     type: switch
+    #     label: ratmd.bloghub::lang.model.comments.favorite
+    #     comment: ratmd.bloghub::lang.model.comments.favoriteComment
     
     title: 
         type: text

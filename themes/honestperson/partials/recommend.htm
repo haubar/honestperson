@@ -17,7 +17,7 @@ sortOrder = 'published_at desc'
                     <img loading="lazy" decoding="async" src="{{ post.featured_images[0].path ?? 'assets/images/loading.jpg'|theme }}" alt="{{ post.featured_images[0].description }}" class="w-100">
                     <div class="media-body ml-3">
                         <h3 style="margin-top:-5px">{{ post.title }}</h3>
-                        <p class="mb-0 small">{{ (post.content|length > 50 ? post.content|slice(0, 80) ~ '…' : post.content ) }}</p>
+                        <p class="mb-0 small">{{ (post.excerpt|length > 50 ? post.excerpt|slice(0, 80) ~ '…' : post.excerpt ) }}</p>
                     </div>
                 </a> 
                 {% endfor %} 
