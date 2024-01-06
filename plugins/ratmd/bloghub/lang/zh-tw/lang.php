@@ -269,12 +269,12 @@ return [
             'descriptionComment' => '',
             'promote' => '',
             'promoteComment' => '',
-            'color' => 'Color',
+            'color' => '顏色',
             'colorComment' => 'Supporting themes may use this color to highlight this tag.',
             'posts' => '選擇文章',
             'postsComment' => '選擇要使用這個tag的文章',
             'postsEmpty' => '沒有可用的文章.',
-            'postsNumber' => '文章編號'
+            'postsNumber' => '文章數量'
         ],
         'users' => [
             'displayName' => 'Display Name',
