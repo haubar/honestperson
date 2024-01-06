@@ -76,14 +76,14 @@ tabs:
             type: switch
             label: ratmd.bloghub::lang.settings.comments.form_comment_markdown.label
             comment: ratmd.bloghub::lang.settings.comments.form_comment_markdown.comment
-            default: true
+            default: false
 
         form_comment_honeypot:
             tab: ratmd.bloghub::lang.settings.comments.tab
             type: switch
             label: ratmd.bloghub::lang.settings.comments.form_comment_honeypot.label
             comment: ratmd.bloghub::lang.settings.comments.form_comment_honeypot.comment
-            default: true
+            default: false
 
         form_comment_captcha:
             tab: ratmd.bloghub::lang.settings.comments.tab
