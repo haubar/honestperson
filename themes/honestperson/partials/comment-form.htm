@@ -69,9 +69,11 @@
             </div>
             <div class="col-md-6">
               <input type="text" class="form-control mb-4" placeholder="* 顯示名稱" name="{{ username_name }}" id="{{ username_id }}" value="{{ currentUser.bloghub_display | default(currentUser.username) }}" readonly>
+              <input type="hidden" name="{{ username_name }}" id="{{ username_id }}" value="{{ currentUser.bloghub_display | default(currentUser.username) }}" >
             </div>
             <div class="col-md-6">
-              <input type="email" class="form-control mb-4" placeholder="* 電子郵件地址" name="{{ email_name }}" id="{{ email_id }}" value="{{ currentUser.email }}" readonly>
+              <input type="email" class="form-control mb-4" placeholder="* 電子郵件地址" value="{{ currentUser.email }}" readonly>
+              <input type="hidden" name="{{ email_name }}" id="{{ email_id }}" value="{{ currentUser.email }}" >
             </div>
             {% if showCommentFormHoneypot %}
                 <input type="hidden" name="comment_honey" value="{{ honeypotTime }}" />
