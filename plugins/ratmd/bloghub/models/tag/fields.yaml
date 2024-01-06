@@ -23,7 +23,7 @@ fields:
         span: right
     
     description:
-        type: markdown
+        type: text
         label: ratmd.bloghub::lang.model.tags.description
         comment: ratmd.bloghub::lang.model.tags.descriptionComment
     

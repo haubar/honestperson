@@ -11,6 +11,10 @@ columns:
         label: ratmd.bloghub::lang.model.tags.title
         searchable: true
     
+    description:
+        label: ratmd.bloghub::lang.model.tags.description
+        searchable: true
+
     # promote:
     #     label: ratmd.bloghub::lang.model.tags.promote
     #     type: switch
