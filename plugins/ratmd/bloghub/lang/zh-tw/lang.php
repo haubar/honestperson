@@ -266,7 +266,7 @@ return [
             'title' => '標籤名稱',
             'titleComment' => '',
             'description' => '描述',
-            'descriptionComment' => '',
+            'descriptionComment' => '可填入標簽的註記或說明',
             'promote' => '',
             'promoteComment' => '',
             'color' => '顏色',
