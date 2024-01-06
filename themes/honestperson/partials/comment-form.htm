@@ -75,9 +75,8 @@
               <input type="email" class="form-control mb-4" placeholder="* 電子郵件地址" value="{{ currentUser.email }}" readonly>
               <input type="hidden" name="{{ email_name }}" id="{{ email_id }}" value="{{ currentUser.email }}" >
             </div>
-            {% if showCommentFormHoneypot %}
-                <input type="hidden" name="comment_honey" value="{{ honeypotTime }}" />
-            {% endif %}
+           
+            <input type="hidden" name="comment_time" value="{{ validationTime }}" />
             <input type="hidden" name="comment_validation" value="{{ validationHash }}" />
             <input type="hidden" name="comment_form_id" value="{{ bloghubCommentSection.id }}" />
             <div class="col-12">
