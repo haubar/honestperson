@@ -18,6 +18,7 @@ return [
         'access_other_posts' => '管理其他用户文章',
         'access_import_export' => '允許匯入和匯出',
         'access_publish' => '允許發布文章',
+        'preview' => '預覽',
         'delete' => '刪除',
         'delete_confirm' => '確定刪除?',
         'chart_published' => '已發布',
