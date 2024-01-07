@@ -51,13 +51,9 @@ commentsAnchor = 'comments'
 </article>
 
 
-{% if showCommentsForm %}
-<div id="respond" class="mt-5" data-bloghub-comments>
-    <label>留言</label>
-    {% partial 'comment-list' comments=comments post=post %}
-    {% partial 'comment-form' cid=bloghubCommentSection.id post=post %}
-</div>
-{% endif %}
+
+{% component 'bloghubCommentSection' %}
+
 {% framework extras %}
 
 

@@ -1,31 +1,126 @@
-<div class="comment-list">
-    {% macro renderRecursive(context, items, parent = null, level = 1) %}
-        {% for comment in items %}
-            {% if level == 1 %}
-                {% set paddingLeft = 0 %}
-            {% else %}
-                {% set paddingLeft = 42 %}
-            {% endif %}
-
-            {% if comment.status == 'pending' %}
-                <div id="comment-{{ comment.id }}" class="comment-item comment-level-{{ level }} my-2" style="padding-left: {{ paddingLeft }}px">
-                    {% partial '@_single' comment=comment %}
+<!-- <div id="comments" class="comments-area"> -->
+<div class="comments-area">
+    <ol class="comment-list">
+        {% for index, comment in comments %}
+            {% if comment.status == 'approved' %}
+            <li id="comment-{{ comment.id }}" class="comment even {% if index is odd %}thread-even{% else %}thread-odd{% endif %} depth-1 parent">
+            <article id="comment-{{ comment.id }}" class="comment-body" data-comment-id="{{ comment.id }}">
+                <footer class="comment-meta">
+                <div class="comment-author vcard">
+                    <img alt="頭像" 
+                        src="{{ comment.avatar }}" 
+                        data-lazy-srcset="{{ comment.avatar }}" 
+                        class="avatar avatar-56 photo entered lazyloaded" height="56" width="56" decoding="async" 
+                        data-lazy-src="{{ comment.avatar }}" 
+                        data-ll-status="loaded" 
+                        srcset="{{ comment.avatar }}">
+                    <noscript>
+                    <img alt="頭像" 
+                        src="{{ comment.avatar }}" 
+                        srcset="{{ comment.avatar }}" 
+                        class="avatar avatar-56 photo" height="56" width="56" decoding="async"/>
+                    </noscript>
+                    <b class="fn">{{ comment.display_name }}</b>
+                    <span class="says">表示:</span> 
                 </div>
-            {% else %}
-                <div id="comment-{{ comment.id }}" class="comment-item comment-level-{{ level }} my-2" style="padding-left: {{ paddingLeft }}px">
-                    {% partial '@_single' comment=comment %}
-
-                    {% if context.showCommentsHierarchical and comment.children %}
-                        {{ _self.renderRecursive(context, comment.children, comment, level + 1) }}
+                <div class="comment-metadata"> 
+                    <a href="/#comment">
+                    <time datetime="{{ comment.created_at }}">{{ comment.created_at|date('Y-m-d h:i:s') }}</time>
+                    </a> 
+                </div>
+                </footer>
+                <div class="comment-content">
+                {{ comment.comment_content | raw }}
+                </div>
+                <!-- <div class="reply">
+                <a rel="nofollow" 
+                    class="comment-reply-link" 
+                    href="#comment-{{ comment.id }}" 
+                    data-commentid="{{ comment.id }}" 
+                    data-postid="{{ post.id }}">回覆</a>
+                </div> -->
+                {% if comment.status == 'pending' %}
+                    {% if currentUserCanModerate %}
+                        <!-- <div class="reply">
+                            <a 
+                                href="#" 
+                                data-bloghub-handler="onChangeStatus" 
+                                data-bloghub-status="approve"
+                                data-bloghub-id="{{ comment.id }}"
+                                title="顯示留言"
+                                class="btn btn-sm btn-success"
+                            >
+                                顯示留言
+                            </a>
+                        </div>
+                        <div class="reply">
+                            <a 
+                                href="#" 
+                                data-bloghub-handler="onChangeStatus"  
+                                data-bloghub-status="reject"
+                                data-bloghub-id="{{ comment.id }}"
+                                title="移除留言"
+                                class="btn btn-sm btn-danger"
+                            >
+                                移除留言
+                            </a>
+                        </div> -->
                     {% endif %}
-                </div>
+                {% else %}
+                    {% if currentUserCanComment %}
+                        <div class="reply">
+                            <a 
+                                href="#comment-{{ comment.id }}" 
+                                data-bloghub-handler="onCreateReply"  
+                                data-bloghub-id="{{ comment.id }}"
+                                class="comment-reply-link"
+                            >回覆</a>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            </article>
+            <!-- 回應的回應 -->
+            {% for index, comment in comment.allchildren %}
+            <ol class="children">
+                <li id="comment-{{ comment.id }}" class="comment byuser comment-author-chiay0327 Honestperson odd alt depth-2">
+                <article id="div-comment-{{ comment.id }}" class="comment-body">
+                    <footer class="comment-meta">
+                    <div class="comment-author vcard"> 
+                        <img alt="頭像" 
+                        src="{{ comment.avatar }}" 
+                        data-lazy-srcset="{{ comment.avatar }}" 
+                        class="avatar avatar-56 photo entered lazyloaded" height="56" width="56" decoding="async" 
+                        data-lazy-src="{{ comment.avatar }}" 
+                        data-ll-status="loaded" 
+                        srcset="{{ comment.avatar }}">
+                        <noscript>
+                        <img alt="頭像" 
+                        src="{{ comment.avatar }}" 
+                        srcset="{{ comment.avatar }}" 
+                        class="avatar avatar-56 photo" height="56" width="56" decoding="async"/>
+                        </noscript>
+                        <b class="fn">{{ comment.display_name }}</b>
+                        <span class="says">表示:</span> 
+                    </div>
+                    <div class="comment-metadata"> 
+                        <a href="#comment-{{ comment.id }}">
+                        <time>{{ comment.created_at|date('Y-m-d h:i:s') }}</time>
+                        </a> 
+                    </div>
+                    </footer>
+                    <div class="comment-content">
+                    {{ comment.comment_content | raw }}
+                    </div>            
+                    <!-- <div class="reply">
+                    <a rel="nofollow" class="comment-reply-link" href="#comment-{{ comment.id }}">回覆</a>
+                    </div> -->
+                </article>
+                </li>
+            </ol>
+            {% endfor %}
+            </li>
             {% endif %}
-        {% endfor %}
-    {% endmacro %}
-
-    {{ _self.renderRecursive(_context, comments) }}
-
-    {% if comments.lastPage > 1 %}
-        {% partial '@_pagination' pagination=comments %}
-    {% endif %}
+           
+        {% endfor %}                  
+    </ol>
 </div>

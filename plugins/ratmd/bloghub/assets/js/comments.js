@@ -230,7 +230,7 @@
             if (parent) {
                 this.showLoading(parent.querySelectorAll('[data-bloghub-handler]'));
             }
-            
+            console.info
             // Call AJAX backend
             this.callOctober('onCreateReply', {
                 comment_id: el.dataset.bloghubId

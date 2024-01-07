@@ -685,9 +685,9 @@ class CommentSection extends ComponentBase
         // Return Reply Partial and submit button text
         return [
             'status' => 'success',
-            'reply' => $this->renderPartial('@_reply', [
-                'comment' => $comment
-            ]),
+            // 'reply' => $this->renderPartial('@_reply', [
+            //     'comment' => $comment
+            // ]),
             'comment' => $comment,
             'submitText' => Lang::get('ratmd.bloghub::lang.frontend.comments.submit_reply')
         ];
@@ -774,6 +774,18 @@ class CommentSection extends ComponentBase
 
             $honey = md5($honey);
         }
+        if (!input('comment_name')) {
+            if (!input('comment_user' . $honey)) {
+                throw new AjaxException([
+                    'message' => Lang::get('請搷入留言名稱')
+                ]);
+            }
+            if (!input('comment_email' . $honey)) {
+                throw new AjaxException([
+                    'message' => Lang::get('請搷入email')
+                ]);
+            }
+        }
 
         // Check current User
         if (!$this->page['currentUserCanComment']) {
@@ -797,7 +809,7 @@ class CommentSection extends ComponentBase
 
         if ($this->page['currentUser']) {
             $comment->authorable = $this->page['currentUser'];
-
+            
             if ($this->config('moderate_user_comments') === '0' || $this->getBackendUser() !== null) {
                 $comment->status = 'approved';
             }
@@ -840,7 +852,7 @@ class CommentSection extends ComponentBase
 
             $comment->parent_id = $parent->id;
         }
-
+        // dump($comment);
         if ($comment->save()) {
             $this->post = $this->getPost();
 
@@ -853,8 +865,7 @@ class CommentSection extends ComponentBase
 
             return [
                 'status' => 'success',
-                'comments' => ''
-                // 'comments' => $this->renderPartial('@default')
+                'comments' => $this->renderPartial('@default')
             ];
         } else {
             throw new AjaxException(Lang::get('ratmd.bloghub::lang.frontend.errors.unknown_error'));

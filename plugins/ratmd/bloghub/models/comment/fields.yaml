@@ -9,11 +9,11 @@ fields:
     #     label: ratmd.bloghub::lang.model.comments.favorite
     #     comment: ratmd.bloghub::lang.model.comments.favoriteComment
     
-    title: 
-        type: text
-        label: ratmd.bloghub::lang.model.comments.title
-        comment: ratmd.bloghub::lang.model.comments.titleComment
-        span: left
+    # title: 
+    #     type: text
+    #     label: ratmd.bloghub::lang.model.comments.title
+    #     comment: ratmd.bloghub::lang.model.comments.titleComment
+    #     span: left
 
     status:
         type: dropdown
@@ -25,7 +25,7 @@ fields:
             approved: ratmd.bloghub::lang.model.comments.statusApproved
             rejected: ratmd.bloghub::lang.model.comments.statusRejected
             spam: ratmd.bloghub::lang.model.comments.statusSpam
-        span: right
+        span: left
 
     content:
         type: textarea

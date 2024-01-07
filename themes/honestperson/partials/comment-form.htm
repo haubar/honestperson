@@ -10,10 +10,13 @@
       {% set email_id = bloghubCommentSection.id ~ '_email' %}
       {% set email_name = 'comment_email' %}
   {% endif %}
-     
-  {% if showCommentsForm %}
+{% else %}
+  
+{% endif %}
+
     <div class="mt-5">
-        <div id="respond" class="comment-respond" title="發佈留言">
+        <!-- <div id="respond" class="comment-respond" title="發佈留言"> -->
+        <div  class="comment-respond" title="發佈留言">
           <h3 id="reply-title" class="comment-reply-title">發佈留言 
             <small>
               <a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display:none;">取消回覆</a>
@@ -27,65 +30,45 @@
             <div class="col-12">
               <textarea id="{{ bloghubCommentSection.id }}_comment" name="comment_comment" class="form-control mb-4" placeholder="* 留言" rows="5"></textarea>
             </div>
-            <div class="col-md-6">
-              <input type="text" class="form-control mb-4" placeholder="* 顯示名稱" name="{{ username_name }}" id="{{ username_id }}" required>
-            </div>
-            <div class="col-md-6">
-              <input type="email" class="form-control mb-4" placeholder="* 電子郵件地址" name="{{ email_name }}" id="{{ email_id }}" required>
-            </div>
+            {% if not isLoggedIn %}
+              <div class="col-md-6">
+                <input type="text" class="form-control mb-4" placeholder="* 顯示名稱" name="{{ username_name }}" id="{{ username_id }}" required>
+              </div>
+              <div class="col-md-6">
+                <input type="email" class="form-control mb-4" placeholder="* 電子郵件地址" name="{{ email_name }}" id="{{ email_id }}" required>
+              </div>
+            {% else %}
+              <div class="col-md-6">
+                <input 
+                      id="{{ __SELF__.id }}_user" 
+                      type="text" 
+                      name="comment_name" 
+                      class="form-control mb-4" 
+                      placeholder="* 顯示名稱" 
+                      value="{{ currentUser.bloghub_display | default(currentUser.username) }}" 
+                      readonly required>
+              </div>
+              <div class="col-md-6">
+                <input 
+                    type="email" 
+                    class="form-control mb-4" 
+                    placeholder="* 電子郵件地址" 
+                    value="{{ currentUser.email }}"
+                    readonly>
+              </div>
+            {% endif %}
             {% if showCommentFormHoneypot %}
-                <input type="hidden" name="comment_honey" value="{{ honeypotTime }}" />
+              <input type="hidden" name="comment_honey" value="{{ honeypotTime }}" />
             {% endif %}
             <input type="hidden" name="comment_time" value="{{ validationTime }}" />
             <input type="hidden" name="comment_validation" value="{{ validationHash }}" />
             <input type="hidden" name="comment_form_id" value="{{ bloghubCommentSection.id }}" />
             <div class="col-12">
               <button class="btn btn-outline-primary" type="submit" id="{{ bloghubCommentSection.id }}_submit" data-bloghub-handler="onComment">留言發佈</button>
-            </div>
-            {{ form_close() }}
+            </div>  
+          {{ form_close() }}
         </div>
     </div>
-  {% endif %}
-{% else %}
-  {% set username_id = bloghubCommentSection.id ~ '_username' %}
-  {% set username_name = 'comment_user' %}
-  {% set email_id = bloghubCommentSection.id ~ '_email' %}
-  {% set email_name = 'comment_email' %}
-  {% if showCommentsForm %}
-    <div class="mt-5">
-        <div id="respond" class="comment-respond" title="發佈留言">
-          <h3 id="reply-title" class="comment-reply-title">發佈留言 
-            <small>
-              <a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display:none;">取消回覆</a>
-            </small>
-          </h3>
-          <p class="comment-notes small text-muted">
-            <span id="email-notes">發佈留言必須填寫的電子郵件地址不會公開。</span> 
-            <span class="required-field-message">必填欄位標示為 <span class="required text-danger">*</span></span>
-          </p>
-          {{ form_open({ 'data-bloghub-handler': 'onComment', 'class':'row' }) }}
-            <div class="col-12">
-              <textarea id="{{ bloghubCommentSection.id }}_comment" name="comment_comment" class="form-control mb-4" placeholder="* 留言" rows="5"></textarea>
-            </div>
-            <div class="col-md-6">
-              <input type="text" class="form-control mb-4" placeholder="* 顯示名稱" name="{{ username_name }}" id="{{ username_id }}" value="{{ currentUser.bloghub_display | default(currentUser.username) }}" readonly>
-              <input type="hidden" name="{{ username_name }}" id="{{ username_id }}" value="{{ currentUser.bloghub_display | default(currentUser.username) }}" >
-            </div>
-            <div class="col-md-6">
-              <input type="email" class="form-control mb-4" placeholder="* 電子郵件地址" value="{{ currentUser.email }}" readonly>
-              <input type="hidden" name="{{ email_name }}" id="{{ email_id }}" value="{{ currentUser.email }}" >
-            </div>
-           
-            <input type="hidden" name="comment_time" value="{{ validationTime }}" />
-            <input type="hidden" name="comment_validation" value="{{ validationHash }}" />
-            <input type="hidden" name="comment_form_id" value="{{ bloghubCommentSection.id }}" />
-            <div class="col-12">
-              <button class="btn btn-outline-primary" type="submit" id="{{ bloghubCommentSection.id }}_submit" data-bloghub-handler="onComment">留言發佈</button>
-            </div>
-            {{ form_close() }}
-        </div>
-    </div>
-  {% endif %}
 
-{% endif %}
+
 
