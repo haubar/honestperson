@@ -241,14 +241,14 @@
                     }
                     form.scrollIntoView({ behavior: "smooth" });
                     form.querySelector('button[type="submit"]').innerText = data.submitText;
-                    form.querySelector('button[data-bloghub-handler="onCancelReply"]').style.removeProperty('display');
+                    // form.querySelector('button[data-bloghub-handler="onCancelReply"]').style.removeProperty('display');
 
                     let hidden = document.createElement('INPUT');
                     hidden.type = 'hidden';
                     hidden.name = 'comment_parent';
                     hidden.value = data.comment.id;
                     form.appendChild(hidden);
-                    form.insertBefore(this.stringToElement(data.reply), form.children[0]);
+                    // form.insertBefore(this.stringToElement(data.reply), form.children[0]);
                 },
                 ({ data, responseCode, xhr }) => {
                     if (parent) {
@@ -351,7 +351,8 @@
                     this.hideLoading(form.querySelectorAll('button'));
 
                     if (typeof data === 'object') {
-                        let alert = this.createAlert('danger', data.message || data.X_OCTOBER_ERROR_MESSAGE);
+                        let alert = this.createAlert('danger', data.message || data.responseJSON.message || data.responseJSON.X_OCTOBER_ERROR_MESSAGE || data.X_OCTOBER_ERROR_MESSAGE);
+                        // let alert = this.createAlert('danger', data.message || data.X_OCTOBER_ERROR_MESSAGE);
 
                         let formAlert = form.querySelector('.alert');
                         if (formAlert) {

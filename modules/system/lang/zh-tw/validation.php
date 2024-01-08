@@ -55,10 +55,10 @@ return [
     "not_in"           => "選取的 :attribute 無效.",
     "numeric"          => ":attribute 必須是一個數字.",
     "regex"            => ":attribute 格式無效.",
-    "required"         => "需要 :attribute 字串.",
-    "required_if"      => "需要 :attribute 字串, 當 :other 是 :value.",
-    "required_with"    => "需要 :attribute 字串, 當 :values 是目前值.",
-    "required_without" => "需要 :attribute 字串, 當 :values 不是目前值.",
+    "required"         => "需要:attribute的文字.",
+    "required_if"      => "需要:attribute的文字, 當 :other 是 :value.",
+    "required_with"    => "需要:attribute的文字, 當 :values 是目前值.",
+    "required_without" => "需要:attribute的文字, 當 :values 不是目前值.",
     "same"             => ":attribute 和 :other 必須相符.",
     "size"             => [
         "numeric" => ":attribute 必須是 :size.",
@@ -93,6 +93,10 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'author' => '名稱',
+        'author_email' => 'email',
+        'content' => '留言內容'
+    ],
 
 ];

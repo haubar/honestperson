@@ -243,14 +243,14 @@
                     }
                     form.scrollIntoView({ behavior: "smooth" });
                     form.querySelector('button[type="submit"]').innerText = data.submitText;
-                    form.querySelector('button[data-bloghub-handler="onCancelReply"]').style.removeProperty('display');
+                    // form.querySelector('button[data-bloghub-handler="onCancelReply"]').style.removeProperty('display');
 
                     let hidden = document.createElement('INPUT');
                     hidden.type = 'hidden';
                     hidden.name = 'comment_parent';
                     hidden.value = data.comment.id;
                     form.appendChild(hidden);
-                    form.insertBefore(this.stringToElement(data.reply), form.children[0]);
+                    // form.insertBefore(this.stringToElement(data.reply), form.children[0]);
                 },
                 ({ data, responseCode, xhr }) => {
                     if (parent) {
@@ -340,20 +340,20 @@
 
             // Show Loading Indicator
             this.showLoading(form.querySelectorAll('button'));
-
+            // console.log(form)
             // Call AJAX backend
             this.callOctober('onComment', Object.fromEntries([...(new FormData(form)).entries()])).then(
                 ({ data, responseCode, xhr }) => {
                     this.hideLoading(form.querySelectorAll('button'));
-
                     let comments = this.stringToElement(data.comments);
                     this.parent.innerHTML = comments.innerHTML;
                 },
                 ({ data, responseCode, xhr }) => {
                     this.hideLoading(form.querySelectorAll('button'));
-
+                    console.log(data)
                     if (typeof data === 'object') {
-                        let alert = this.createAlert('danger', data.message || data.X_OCTOBER_ERROR_MESSAGE);
+                        let alert = this.createAlert('danger', data.message || data.responseJSON.message || data.responseJSON.X_OCTOBER_ERROR_MESSAGE || data.X_OCTOBER_ERROR_MESSAGE);
+                        // let alert = this.createAlert('danger', data.message || data.X_OCTOBER_ERROR_MESSAGE);
 
                         let formAlert = form.querySelector('.alert');
                         if (formAlert) {

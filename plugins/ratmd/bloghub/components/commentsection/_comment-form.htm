@@ -24,7 +24,7 @@
             {% endif %}
         </div>
     {% else %}
-    {{ form_open({ 'data-bloghub-handler': 'onComment', 'class':'row' }) }}
+        {{ form_open({ 'data-request': 'onSubmit', 'data-bloghub-handler': 'onComment', 'class':'row' }) }}
             <div class="col-12">
                 <textarea 
                     id="{{ __SELF__.id }}_comment" 

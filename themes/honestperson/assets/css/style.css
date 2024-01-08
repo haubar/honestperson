@@ -964,7 +964,7 @@ footer .section {
   outline: 0
 }
 .Honestperson > article .fn::after {
-  content: "Honestperson ";
+  /* content: "Honestperson "; */
   left: 3px;
   position: relative;
   top: 2px;
