@@ -375,5 +375,28 @@ return [
         'direction' => '順序',
         'direction_asc' => '升冪',
         'direction_desc' => '降冪',
-    ]
+    ],
+    'dictionary' => [
+        'key_required' => '需要關鍵字段',
+        'value_required' => '需要值字段',
+    ],
+    'uploader' => [
+        'uploading' => '上傳文件',
+        'complete' => '上傳完成',
+    ],
+    'richeditor' => [
+        'upload_from_computer' => '從計算機上傳',
+        'embedding_code' => '嵌入代碼',
+        'url_required' => '需要URL',
+        'url_validation' => 'URL的開頭必須是 http:// 或 https://',
+        'add_image' => '插入圖像',
+        'add_video' => '插入視頻',
+        'add_audio' => '插入音頻',
+        'add_file' => '插入文件',
+        'embedding_code_required' => '需要嵌入程式碼',
+        'embedding_code_invalid' => '請輸入有效的HTML',
+        'embedding_code_invalid_title' => '無效的程式碼碼',
+        'browse' => '瀏覽媒體庫',
+        'by_url' => '從URL',
+    ],
 ];
